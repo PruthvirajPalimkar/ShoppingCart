@@ -1,0 +1,29 @@
+<!-- <h1>Your Cart</h1>
+<div *ngFor="let book of getCart(); let i=index;">
+    <div>
+        <p class="my-4 text-2xl bg-slate-700 m-8 p-8 min-w-fit rounded-xl text-white">{{i+1}}. {{ book.name }} --> 
+            <!-- {{book.amount}}</p> -->
+    <!-- </div>
+</div> -->
+<!-- <div *ngIf="getCart().length == 0">No books in your cart</div> -->
+
+<h2>Total Amount: {{ totalAmount.toFixed(2) | currency:'INR' }}</h2>
+<div class="flex flex-wrap -mx-8 p-4">
+    <div  *ngFor="let book of getCart(); let i = index" class="cart-item">
+         <!-- <img [src]="item.imageUrl" alt="Product Image" class="cart-item-image" /> -->
+      <div class="cart-item-details">
+        <h3>{{ book.name }}</h3>
+        <p>Price: {{book.amount}}</p>
+        <div class="aspect-w-2 aspect-h-1">
+          <img [src]="book.image" alt="book.name" width="10" class="mb-2 rounded-md w-40 h-29 object-cover">
+        </div>
+        <button class="bg-pink-600 text-white px-4 py-2 rounded-md hover:bg-pink-700" (click)="removeFromCart(this.book)">Remove from Cart</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="getCart().length != 0">
+    <button class="bg-blue-600 text-white px-4 py-2 rounded-md">Proceed to Payment</button>
+  </div> 
+  <div *ngIf="getCart().length == 0">
+    <h1>Your cart is empty.</h1>
+  </div>
